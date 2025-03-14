@@ -1,0 +1,32 @@
+# CURSOR RULES FOR ASTRO BLOG PROJECT
+
+## Build & Development
+- Build command: `pnpm build`
+- Development server: `pnpm dev`
+- Format code: `pnpm format`
+- Lint code: `pnpm lint`
+
+## Code Style
+- Use TypeScript for type safety
+- Double quotes for strings
+- Semicolons required
+- 2-space indentation
+- Max line length: 80 characters
+- Arrow functions with implicit return when possible
+- Use functional components for React
+- Follow Astro component patterns (.astro files)
+- Use Tailwind for styling
+
+## Cloudflare Deployment
+- Prefer pnpm for commands
+- Output directory: `dist`
+- Compatible with Node.js 18+
+- Use `npx wrangler pages deploy dist` for CLI deployment
+- Avoid Node-specific APIs incompatible with Cloudflare
+
+## File Structure
+- Page components in `src/pages`
+- Reusable components in `src/components`
+- Layouts in `src/layouts`
+- Blog content in `src/content/blog`
+- Utils in `src/utils`

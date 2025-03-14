@@ -1,5 +1,15 @@
 ---
-export const prerender = false;
+// For static builds, we need to define all possible paths
+export async function getStaticPaths() {
+  return [
+    { params: { page: undefined } },
+    { params: { page: "1" } },
+    { params: { page: "2" } },
+    { params: { page: "3" } }
+  ];
+}
+
+export const prerender = true;
 ---
 
 <meta http-equiv="refresh" content="0;url=/" />

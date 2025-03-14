@@ -10,10 +10,14 @@
     "astro": "astro",
     "format:check": "prettier --check . --plugin=prettier-plugin-astro",
     "format": "prettier --write . --plugin=prettier-plugin-astro",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "cloudflare:deploy": "./deploy-cloudflare.sh",
+    "cloudflare:deploy:prod": "./deploy-cloudflare.sh --prod",
+    "cloudflare:dev": "pnpm exec wrangler pages dev dist --compatibility-date=2023-08-01"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/cloudflare": "^12.2.4",
     "@astrojs/netlify": "^6.2.3",
     "@astrojs/rss": "^4.0.11",
     "@resvg/resvg-js": "^2.6.2",

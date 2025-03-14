@@ -1,0 +1,5 @@
+name = "personal-blog"
+compatibility_date = "2023-08-01"
+
+# Output directory for Pages deployment (static)
+pages_build_output_dir = "dist"

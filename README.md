@@ -2,6 +2,48 @@
 
 This is my personal blog built with Astro (Paper Theme).
 
+## 🚨 Deployment
+
+This blog is deployed using Cloudflare Pages as a static site.
+
+### Cloudflare Pages Deployment
+
+#### Option 1: Through Cloudflare Dashboard
+1. Connect your GitHub repository to Cloudflare Pages
+2. Set the build command to `pnpm build`
+3. Set the build output directory to `dist`
+4. Set Node.js version to 18 or higher
+
+#### Option 2: Using Wrangler CLI (Recommended)
+Run the deployment script:
+```bash
+# Make sure script is executable
+chmod +x deploy-cloudflare.sh
+
+# Run deployment script (preview deployment)
+pnpm cloudflare:deploy
+
+# For production deployment
+pnpm cloudflare:deploy:prod
+```
+
+Or deploy manually:
+```bash
+# Clean previous builds
+rm -rf dist .astro
+
+# Build
+pnpm build
+
+# Deploy with Wrangler
+pnpm exec wrangler pages deploy dist
+```
+
+### Troubleshooting Cloudflare Deployment
+- If you encounter build issues, check the `cloudflare` directory for compatibility files
+- Image optimization uses a static approach in Cloudflare environment
+- For more details, see our [CLOUDFLARE.md](./CLOUDFLARE.md) documentation
+
 ## 🚀 Project Structure
 
 Inside this repository, you'll see the following folders and files:

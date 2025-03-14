@@ -4,8 +4,11 @@ import tailwind from "@astrojs/tailwind";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-import netlify from '@astrojs/netlify';
+import cloudflare from '@astrojs/cloudflare';
 import { SITE } from "./src/config";
+
+// Check if we need a static build
+const useStaticBuild = true; // Set to false if you want SSR
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,8 +20,17 @@ export default defineConfig({
     react(),
     sitemap(),
   ],
-  output: "server",
-  adapter: netlify(),
+  // Use static output for simpler Cloudflare deployment
+  output: useStaticBuild ? "static" : "server",
+  ...(useStaticBuild ? {} : { adapter: cloudflare() }),
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      }
+    },
+  },
   markdown: {
     remarkPlugins: [
       remarkToc,
@@ -30,7 +42,6 @@ export default defineConfig({
       ],
     ],
     shikiConfig: {
-      // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
       wrap: true,
     },
@@ -38,6 +49,9 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
+    },
+    ssr: {
+      noExternal: ["@resvg/resvg-js"],
     },
   },
   scopedStyleStrategy: "where",
