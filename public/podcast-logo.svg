@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46" fill="none">
+  <!-- Centered container for the diamond logo -->
+  <g transform="translate(23, 23)" stroke="#1e293b" fill="none">
+    <!-- Outer diamond -->
+    <polygon points="0,-18 18,0 0,18 -18,0" stroke-width="2.5" />
+    
+    <!-- Inner diamond -->
+    <polygon points="0,-9 9,0 0,9 -9,0" stroke-width="2.5" />
+  </g>
+</svg> 
